@@ -139,7 +139,7 @@ console.log(reduce)
     </FormControl>
     <Divider style={{ marginTop: "10px", marginBottom: "10px" }} />
     <div style={{ border: '1px solid', width: '100%',height: '50%', position: 'fixed !important' }}>
-      {params.id && <Mapa coordenadaX={params.coordenadaX} coordenadaY={params.coordenadaY} />}
+      {params.id && <Mapa nome={params.nome} coordenadaX={params.coordenadaX} coordenadaY={params.coordenadaY} />}
     </div>
   </>)
 }

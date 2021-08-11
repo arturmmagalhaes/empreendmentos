@@ -13,7 +13,7 @@ function Mapa(props) {
         <TileLayer url="https://a.tile.openstreetmap.org/{z}/{x}/{y}.png" />
         <Marker position={[-5.1386323, -39.7284444]}>
           <Popup>
-            SOP
+            {props.nome}
           </Popup>
         </Marker>
       </MapContainer>
