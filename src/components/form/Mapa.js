@@ -2,11 +2,11 @@ import "leaflet/dist/leaflet.css";
 
 import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
 
-function Mapa() {
+function Mapa(props) {
 
   return (
     <div id="map">
-      <MapContainer center={[-5.1386323, -39.7284444]}
+      <MapContainer center={[props.coordenadaX ||  (-5.1386323), props.coordenadaY || (-39.7284444)]}
         zoom={8}
         maxZoom={13}
         minZoom={8}>

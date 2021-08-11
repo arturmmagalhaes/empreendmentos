@@ -2,13 +2,17 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
-import Tabs from '@material-ui/core/Tabs';
-import Tab from '@material-ui/core/Tab';
+import Menu from '@material-ui/core/Menu';
+import MenuItem from '@material-ui/core/MenuItem';
+import Toolbar from '@material-ui/core/Toolbar';
+import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
+import Button from '@material-ui/core/Button';
 import FormCadastro from '../form';
-import ListaEmpreendimentos from '../Lista';
+import ListaEmpreendimentos from '../lista';
 import {useSelector, useDispatch} from 'react-redux';
+import { useHistory, Link } from 'react-router-dom';
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -36,13 +40,6 @@ TabPanel.propTypes = {
   value: PropTypes.any.isRequired,
 };
 
-function a11yProps(index) {
-  return {
-    id: `simple-tab-${index}`,
-    'aria-controls': `simple-tabpanel-${index}`,
-  };
-}
-
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
@@ -50,30 +47,19 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function MenuPrincipal(props) {
-  const classes = useStyles(); 
-  const reduce = useSelector(store => store.formCadastroReducer)
-  const [value, setValue] = React.useState(0);
+export default function MenuPrincipal() {
 
-  const handleChange = (event, newValue) => {
-    setValue(newValue);
-  };
-console.log(reduce, props)
+  const classes = useStyles(); 
+  const history = useHistory();
+
   return (
     <div className={classes.root}>
       <AppBar position="static">
-        <Tabs value={value} onChange={handleChange} aria-label="simple tabs example">
-          <Tab label="Cadastro do Empreendimento" {...a11yProps(0)} />
-          <Tab label="Lista de Empreendimentos" {...a11yProps(1)} />
-          <Tab label="Item Three" {...a11yProps(2)} />
-        </Tabs>
+        <Toolbar>
+          <Button color="inherit" onClick={() => history.push('/form') }>Cadastro</Button>
+          <Button color="inherit" onClick={() => history.push('/lista') }>Lista</Button>
+        </Toolbar>
       </AppBar>
-      <TabPanel value={value} index={0}>
-        <FormCadastro />
-      </TabPanel>
-      <TabPanel value={value} index={1}>
-        <ListaEmpreendimentos lista={reduce.lista || []} />
-      </TabPanel>
     </div>
   );
 }

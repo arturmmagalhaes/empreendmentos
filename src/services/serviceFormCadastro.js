@@ -2,7 +2,7 @@ import axios from "axios";
 
 const api = axios.create({
   // baseURL: `localhost:8080/empreendimento`,
-  baseURL: `http://e2605:8080/empreendimento`,
+  baseURL: `http://localhost:8080/empreendimento`,
   headers: {
     Accept: "application/json",
     "Content-Type": "application/json"
@@ -16,10 +16,10 @@ export const ServiceFormCadastro = {
   listar: () => {
     return api.get("/");
   },
-  editar: (id, data) => {
-    return api.put(`/update/${id}`, { ...data })
+  editar: (data) => {
+    return api.put(`/update/${data.id}`, { ...data })
   },
   deletar: (id) => {
-    return api.delete(`/${id}`)
+    return api.delete(`/delete/${id}`)
   }
 }
