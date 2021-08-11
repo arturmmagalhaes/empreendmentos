@@ -20,6 +20,6 @@ export const ServiceFormCadastro = {
     return api.put(`/update/${data.id}`, { ...data })
   },
   deletar: (id) => {
-    return api.delete(`/delete/${id}`)
+    return api.delete(`/${id}`)
   }
 }
